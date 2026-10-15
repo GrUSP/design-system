@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Neutrals & ink" subtitle="True-black-anchored grey ramp for text and surfaces" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-card); padding: 22px; font-family: var(--font-body); }
+  .ramp { display: grid; grid-template-columns: repeat(11, 1fr); gap: 5px; }
+  .cell { height: 70px; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,.12); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; }
+  .n { font-family: var(--font-mono); font-size: 9px; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="ramp">
+    <div class="cell" style="background:var(--ink-950)"><span class="n" style="color:#fff">950</span></div>
+    <div class="cell" style="background:var(--ink-900)"><span class="n" style="color:#fff">900</span></div>
+    <div class="cell" style="background:var(--ink-800)"><span class="n" style="color:#fff">800</span></div>
+    <div class="cell" style="background:var(--ink-700)"><span class="n" style="color:#fff">700</span></div>
+    <div class="cell" style="background:var(--ink-600)"><span class="n" style="color:#fff">600</span></div>
+    <div class="cell" style="background:var(--ink-500)"><span class="n" style="color:#fff">500</span></div>
+    <div class="cell" style="background:var(--ink-400)"><span class="n" style="color:#fff">400</span></div>
+    <div class="cell" style="background:var(--ink-300)"><span class="n" style="color:#000">300</span></div>
+    <div class="cell" style="background:var(--ink-200)"><span class="n" style="color:#000">200</span></div>
+    <div class="cell" style="background:var(--ink-100)"><span class="n" style="color:#000">100</span></div>
+    <div class="cell" style="background:var(--ink-50)"><span class="n" style="color:#000">50</span></div>
+  </div>
+</body>
+</html>

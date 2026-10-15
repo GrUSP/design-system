@@ -1,0 +1,110 @@
+/* ============================================================
+   GrUSP — Color tokens
+   Source of truth: GRUSP MANUAL 2020 (official brand book).
+   Master palette: black · yellow · white · two purples.
+   ============================================================ */
+:root {
+  /* ---------- Brand core (exact manual values) ---------- */
+  --grusp-black:         #000000; /* the wordmark + the heavy keyline outline   */
+  --grusp-yellow:        #ffe900; /* TIGNA's eyes — the brand's electric accent */
+  --grusp-white:         #ffffff;
+  --grusp-purple:        #7f72b1; /* light purple — heritage calligraphic mark  */
+  --grusp-purple-deep:   #4c3e8b; /* deep indigo — heritage / Academy           */
+
+  /* Working tints (derived, for UI states & surfaces) */
+  --grusp-yellow-deep:   #e6c200; /* pressed / shadowed yellow                  */
+  --grusp-purple-soft:   #b3a9d6; /* lavender wash                              */
+
+  /* ---------- Purple scale ---------- */
+  --purple-50:   #f1eff8;
+  --purple-100:  #e4e0f1;
+  --purple-200:  #c9c1e2;
+  --purple-300:  #a89dce;
+  --purple-400:  #9286c0;
+  --purple-500:  #7f72b1;  /* = --grusp-purple */
+  --purple-600:  #645aa0;
+  --purple-700:  #4c3e8b;  /* = --grusp-purple-deep */
+  --purple-800:  #372d62;
+  --purple-900:  #241d42;
+
+  /* ---------- Yellow scale ---------- */
+  --yellow-50:   #fffced;
+  --yellow-100:  #fff6c4;
+  --yellow-300:  #ffef7a;
+  --yellow-400:  #ffe900;  /* = --grusp-yellow */
+  --yellow-600:  #e6c200;
+  --yellow-700:  #b89800;
+
+  /* ---------- Neutral / ink scale ---------- */
+  --ink-950:  #000000;
+  --ink-900:  #121214;
+  --ink-800:  #232327;
+  --ink-700:  #38383f;
+  --ink-600:  #54545d;
+  --ink-500:  #73737d;
+  --ink-400:  #9999a2;
+  --ink-300:  #c2c2c9;
+  --ink-200:  #e1e1e6;
+  --ink-100:  #efeff2;
+  --ink-50:   #f7f7f9;
+  --white:    #ffffff;
+
+  /* ---------- Semantic status ---------- */
+  --success:  #2e9e6b;
+  --success-soft: #e2f4ec;
+  --warning:  #e6a700;
+  --warning-soft: #fbf0d2;
+  --danger:   #d6453f;
+  --danger-soft:  #fbe5e4;
+  --info:     #4c3e8b;
+  --info-soft:    #e4e0f1;
+
+  /* ============================================================
+     Conference sub-brand palette (GRUSP MANUAL 2020)
+     Each event ships its own accent — pair with black + white.
+     ============================================================ */
+  --c-phpday:       #6181b6;
+  --c-jsday:        #4c3e8b;
+  --c-containerday: #f7941e;
+  --c-kerning:      #e13423;
+  --c-cssday:       #40bfef;
+  --c-angularday:   #dd0031;
+  --c-vueday:       #41b883;
+  --c-vueday-ink:   #35495e;
+  --c-reactjsday:   #30aade;
+  --c-reactjsday-2: #5b59a2;
+  --c-idi:          #237d26;
+
+  /* ============================================================
+     Semantic aliases — reach for these in product code
+     ============================================================ */
+  /* Surfaces */
+  --surface-page:    #ffffff;
+  --surface-soft:    #f7f7f9;
+  --surface-card:    #ffffff;
+  --surface-sunken:  #efeff2;
+  --surface-ink:     #000000;   /* dark sections / footer        */
+  --surface-brand:   #7f72b1;   /* purple feature blocks         */
+  --surface-brand-deep: #241d42;
+  --surface-accent:  #ffe900;   /* yellow callout band           */
+
+  /* Text */
+  --text-strong:   #000000;
+  --text-body:     #232327;
+  --text-muted:    #54545d;
+  --text-subtle:   #73737d;
+  --text-on-brand: #ffffff;     /* text on purple        */
+  --text-on-ink:   #f7f7f9;     /* text on black         */
+  --text-on-accent:#000000;     /* text on yellow        */
+  --text-link:     #4c3e8b;
+
+  /* Borders — the brand's signature heavy black keyline */
+  --border-ink:    #000000;
+  --border-strong: #232327;
+  --border-default:#e1e1e6;
+  --border-muted:  #efeff2;
+  --border-brand:  #7f72b1;
+
+  /* Focus */
+  --focus-ring:    #4c3e8b;
+}

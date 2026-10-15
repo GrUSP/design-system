@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Purple scale" subtitle="50 → 900 ramp built around the heritage purples" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-card); padding: 22px; font-family: var(--font-body); }
+  .ramp { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; }
+  .cell { height: 70px; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,.12); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; }
+  .n { font-family: var(--font-mono); font-size: 10px; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="ramp">
+    <div class="cell" style="background:var(--purple-50)"><span class="n" style="color:#241d42">50</span></div>
+    <div class="cell" style="background:var(--purple-100)"><span class="n" style="color:#241d42">100</span></div>
+    <div class="cell" style="background:var(--purple-200)"><span class="n" style="color:#241d42">200</span></div>
+    <div class="cell" style="background:var(--purple-300)"><span class="n" style="color:#241d42">300</span></div>
+    <div class="cell" style="background:var(--purple-400)"><span class="n" style="color:#fff">400</span></div>
+    <div class="cell" style="background:var(--purple-500)"><span class="n" style="color:#fff">500</span></div>
+    <div class="cell" style="background:var(--purple-600)"><span class="n" style="color:#fff">600</span></div>
+    <div class="cell" style="background:var(--purple-700)"><span class="n" style="color:#fff">700</span></div>
+    <div class="cell" style="background:var(--purple-900)"><span class="n" style="color:#fff">900</span></div>
+  </div>
+</body>
+</html>

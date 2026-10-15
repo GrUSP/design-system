@@ -1,0 +1,45 @@
+/* ============================================================
+   GrUSP — Spacing, radius & layout tokens
+   8px base grid. The brand reads bold and roomy.
+   ============================================================ */
+:root {
+  /* ---------- Spacing scale (8px grid) ---------- */
+  --space-0:   0;
+  --space-1:   0.25rem;   /* 4   */
+  --space-2:   0.5rem;    /* 8   */
+  --space-3:   0.75rem;   /* 12  */
+  --space-4:   1rem;      /* 16  */
+  --space-5:   1.5rem;    /* 24  */
+  --space-6:   2rem;      /* 32  */
+  --space-7:   2.5rem;    /* 40  */
+  --space-8:   3rem;      /* 48  */
+  --space-9:   4rem;      /* 64  */
+  --space-10:  5rem;      /* 80  */
+  --space-11:  6rem;      /* 96  */
+  --space-12:  8rem;      /* 128 */
+
+  /* ---------- Radius — soft & rounded, echoing Grota ---------- */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-2xl:  40px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ---------- Border widths — chunky keylines are a motif ---------- */
+  --border-hair:  1px;
+  --border-thin:  1.5px;
+  --border-base:  2px;
+  --border-bold:  3px;
+  --border-chunky:4px;   /* the logo-style heavy outline */
+
+  /* ---------- Layout ---------- */
+  --container-sm:  640px;
+  --container-md:  860px;
+  --container-lg:  1100px;
+  --container-xl:  1320px;
+  --gutter:        var(--space-5);
+  --section-y:     var(--space-11);
+}

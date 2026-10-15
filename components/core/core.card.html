@@ -1,0 +1,76 @@
+<!-- @dsCard group="Components" viewport="700x430" name="Core" subtitle="Button · IconButton · Badge · Tag · Avatar · Card" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-soft); padding: 26px; font-family: var(--font-body); }
+  .wrap { display: flex; flex-direction: column; gap: 22px; }
+  .group { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .lbl { font: var(--kicker); text-transform: uppercase; letter-spacing: .12em; color: var(--text-subtle); width: 100%; margin-bottom: -6px; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script type="text/babel">
+const { Button, IconButton, Badge, Tag, Avatar, Card } = window.GrUSPDesignSystem_705bf7;
+const Heart = () => <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.7-10-9.3C.5 8.5 2 5 5.3 5c2 0 3.3 1.2 4.7 3 1.4-1.8 2.7-3 4.7-3C18 5 19.5 8.5 22 11.7 19.5 16.3 12 21 12 21z"/></svg>;
+const Arrow = () => <span>→</span>;
+
+function Demo() {
+  const [sel, setSel] = React.useState("JavaScript");
+  return (
+    <div className="wrap">
+      <div className="group"><span className="lbl">Buttons</span>
+        <Button variant="primary">Take part</Button>
+        <Button variant="accent" iconRight={<Arrow/>}>Become a speaker</Button>
+        <Button variant="secondary">Code of Conduct</Button>
+        <Button variant="ghost">Skip</Button>
+        <Button variant="primary" size="sm">Small</Button>
+        <Button variant="primary" disabled>Disabled</Button>
+      </div>
+      <div className="group"><span className="lbl">Icon buttons · Badges · Avatars</span>
+        <IconButton label="Like" variant="solid"><Heart/></IconButton>
+        <IconButton label="Like" variant="outline"><Heart/></IconButton>
+        <IconButton label="Like" variant="accent" circle><Heart/></IconButton>
+        <Badge variant="accent">CFP open</Badge>
+        <Badge variant="success" dot>Tickets live</Badge>
+        <Badge variant="purple">Workshop</Badge>
+        <Badge variant="outline">28 May</Badge>
+        <Avatar name="Chiara Salvatore" size="md" ring />
+        <Avatar name="Matteo Beccati" size="md" />
+      </div>
+      <div className="group"><span className="lbl">Tags</span>
+        {["PHP","JavaScript","DevOps","Design","Ruby"].map(t => (
+          <Tag key={t} onClick={() => setSel(t)} selected={sel===t}
+               color={t==="JavaScript"?"var(--c-vueday)":t==="PHP"?"var(--c-phpday)":null}>{t}</Tag>
+        ))}
+      </div>
+      <div className="cards">
+        <Card variant="poster" interactive>
+          <Card.Body>
+            <Card.Title>jsday 2026</Card.Title>
+            <p style={{margin:0,fontSize:14,color:"var(--text-muted)"}}>Two days of JavaScript in Verona.</p>
+          </Card.Body>
+          <Card.Footer><Badge variant="accent">CFP open</Badge><Button variant="ghost" size="sm" iconRight={<Arrow/>}>Details</Button></Card.Footer>
+        </Card>
+        <Card variant="brand">
+          <Card.Body>
+            <Card.Title>Join the community</Card.Title>
+            <p style={{margin:0,fontSize:14,opacity:.9}}>5,000+ devs on Slack. Say ciao 👋</p>
+          </Card.Body>
+        </Card>
+      </div>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo/>);
+</script>
+</body>
+</html>

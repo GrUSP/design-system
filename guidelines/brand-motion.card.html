@@ -1,0 +1,35 @@
+<!-- @dsCard group="Brand" viewport="700x300" name="Motion — logo reveal" subtitle="TIGNA wakes up: the official 8s logo-reveal animation" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-card); padding: 22px; font-family: var(--font-body); display: flex; gap: 24px; align-items: center; }
+  .player { width: 360px; flex: none; border: var(--border-base) solid var(--grusp-black); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--offset-md); background: #fff; }
+  .player video { width: 100%; display: block; }
+  .meta { flex: 1; }
+  .kick { font: var(--kicker); text-transform: uppercase; letter-spacing: .14em; color: var(--grusp-purple-deep); }
+  h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; margin: 8px 0 10px; color: var(--text-strong); }
+  p { font-size: 13.5px; line-height: 1.5; color: var(--text-body); margin: 0 0 12px; max-width: 30em; }
+  .arc { display: flex; gap: 8px; }
+  .step { flex: 1; font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); background: var(--surface-soft); border-radius: var(--radius-sm); padding: 8px 9px; line-height: 1.35; }
+  .step b { color: var(--grusp-purple-deep); display: block; font-family: var(--font-body); font-size: 11px; }
+</style>
+</head>
+<body>
+  <div class="player">
+    <video src="../assets/brand/tigna-intro.mp4" poster="../assets/brand/tigna-logo-poster.png" autoplay muted loop playsinline></video>
+  </div>
+  <div class="meta">
+    <span class="kick">// brand motion</span>
+    <h3>Tigna wakes up</h3>
+    <p>The official logo reveal. The cat starts asleep, the calligraphic <strong>Grusp</strong> script draws in, and the eyes snap open to the alert yellow stare — playful, quick, friendly. Clean white field; no flourish for its own sake.</p>
+    <div class="arc">
+      <div class="step"><b>0s — asleep</b>eyes closed, head only</div>
+      <div class="step"><b>~4s — draw-in</b>script writes on</div>
+      <div class="step"><b>8s — awake</b>yellow eyes open</div>
+    </div>
+  </div>
+</body>
+</html>

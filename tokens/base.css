@@ -1,0 +1,72 @@
+/* ============================================================
+   GrUSP — Base element styles & brand utilities
+   Lightweight, opt-in. Tokens do the heavy lifting.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: var(--body-base);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0 0 0.4em;
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+h1 { font: var(--display-1); }
+h2 { font: var(--heading-1); }
+h3 { font: var(--heading-2); }
+h4 { font: var(--heading-3); }
+
+p  { margin: 0 0 1em; text-wrap: pretty; }
+
+a  { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, kbd, pre, samp { font-family: var(--font-mono); font-size: 0.92em; }
+
+::selection { background: var(--grusp-yellow); color: var(--grusp-black); }
+
+/* ---------- Brand utility classes ---------- */
+
+/* The signature eyebrow/kicker — mono, caps, tracked out */
+.grusp-kicker {
+  font: var(--kicker);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--text-muted);
+}
+
+/* Heavy keyline + hard offset shadow (poster/sticker look) */
+.grusp-card-poster {
+  background: var(--surface-card);
+  border: var(--border-base) solid var(--grusp-black);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--offset-md);
+}
+
+/* Yellow highlight marker behind inline text */
+.grusp-mark {
+  background: var(--grusp-yellow);
+  color: var(--grusp-black);
+  padding: 0.05em 0.3em;
+  border-radius: var(--radius-xs);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Eyes-on accent: yellow underline swash */
+.grusp-underline {
+  background-image: linear-gradient(var(--grusp-yellow), var(--grusp-yellow));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.32em;
+}

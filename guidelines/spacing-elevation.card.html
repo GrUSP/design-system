@@ -1,0 +1,21 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Elevation" subtitle="Soft shadows for floating UI · hard offsets for the poster look" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-soft); padding: 28px 24px; font-family: var(--font-body); display: flex; gap: 26px; align-items: center; flex-wrap: wrap; }
+  .box { width: 96px; height: 62px; background: #fff; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+  .poster { border: 2px solid var(--grusp-black); }
+</style>
+</head>
+<body>
+  <div class="box" style="box-shadow:var(--shadow-sm)">sm</div>
+  <div class="box" style="box-shadow:var(--shadow-md)">md</div>
+  <div class="box" style="box-shadow:var(--shadow-lg)">lg</div>
+  <div class="box poster" style="box-shadow:var(--offset-sm)">offset-sm</div>
+  <div class="box poster" style="box-shadow:var(--offset-md)">offset-md</div>
+  <div class="box poster" style="box-shadow:var(--offset-yellow)">yellow</div>
+</body>
+</html>

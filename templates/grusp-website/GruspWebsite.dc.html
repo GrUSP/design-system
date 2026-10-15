@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="GrUSP website" description="Full click-through recreation of grusp.org — home, conferences, event detail" -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+@keyframes grMarquee{to{transform:translateX(-50%)}}
+</style>
+</helmet>
+<div style="font-family:var(--font-body);color:var(--text-body);background:var(--surface-page);min-height:100%">
+
+<header style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:32px;padding:14px clamp(20px,4vw,56px);background:rgba(255,255,255,.86);backdrop-filter:blur(12px);border-bottom:3px solid var(--grusp-black)">
+  <img src="../../assets/logos/grusp-primary-h-catright.png" alt="GrUSP" style="height:34px;cursor:pointer" onClick="{{ goHome }}">
+  <nav style="display:flex;gap:24px;margin-left:16px">
+    <a style="font-weight:700;font-size:15px;color:var(--text-strong);cursor:pointer;text-decoration:none" onClick="{{ goHome }}">About</a>
+    <a style="font-weight:700;font-size:15px;color:var(--text-strong);cursor:pointer;text-decoration:none" onClick="{{ goConferences }}">Conferences</a>
+    <a style="font-weight:700;font-size:15px;color:var(--text-strong);cursor:pointer;text-decoration:none" onClick="{{ goHome }}">Speakers</a>
+    <a style="font-weight:700;font-size:15px;color:var(--text-strong);cursor:pointer;text-decoration:none" onClick="{{ goHome }}">Initiatives</a>
+    <a style="font-weight:700;font-size:15px;color:var(--text-strong);cursor:pointer;text-decoration:none" onClick="{{ goHome }}">Shop</a>
+  </nav>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:16px">
+    <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;font-weight:700">IT / EN</span>
+    <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="accent" size="sm" onClick="{{ goConferences }}" hint-size="120px,38px">Get tickets</x-import>
+  </div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+  <section style="display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:clamp(40px,6vw,88px) clamp(20px,4vw,56px) 64px;max-width:1320px;margin:0 auto">
+    <div>
+      <span style="display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--grusp-purple-deep);margin-bottom:14px">// since 2003 · made in italy</span>
+      <h1 style="font:900 clamp(48px,6.4vw,92px)/.98 var(--font-display);letter-spacing:-.03em;color:var(--text-strong);margin:0 0 24px">Take part in our<br>next events.</h1>
+      <p style="font-size:19px;line-height:1.55;color:var(--text-muted);max-width:30em;margin:0 0 32px">A welcoming, friendly and diverse environment where anyone can feel at ease. We organize events to train and connect people who share a passion for web development.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px">
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="primary" size="lg" onClick="{{ goConferences }}" hint-size="180px,52px">See the line-up</x-import>
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="secondary" size="lg" onClick="{{ goConferences }}" hint-size="200px,52px">Become a speaker</x-import>
+      </div>
+      <div style="display:flex;gap:40px">
+        <div style="display:flex;flex-direction:column"><b style="font-family:var(--font-cond);font-weight:800;font-size:44px;line-height:.9;color:var(--text-strong)">23</b><span style="font-size:13px;font-weight:700;color:var(--text-subtle)">events / year</span></div>
+        <div style="display:flex;flex-direction:column"><b style="font-family:var(--font-cond);font-weight:800;font-size:44px;line-height:.9;color:var(--text-strong)">20+</b><span style="font-size:13px;font-weight:700;color:var(--text-subtle)">years</span></div>
+        <div style="display:flex;flex-direction:column"><b style="font-family:var(--font-cond);font-weight:800;font-size:44px;line-height:.9;color:var(--text-strong)">5k+</b><span style="font-size:13px;font-weight:700;color:var(--text-subtle)">community</span></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div style="border:4px solid var(--grusp-black);border-radius:28px;overflow:hidden;box-shadow:var(--offset-lg);aspect-ratio:4/3.4">
+        <img src="../../assets/images/audience.jpg" alt="A GrUSP conference audience" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <div style="position:absolute;bottom:-28px;left:-34px;width:132px;background:var(--grusp-yellow);border:4px solid var(--grusp-black);border-radius:20px;padding:12px;box-shadow:var(--offset-md);transform:rotate(-6deg)">
+        <img src="../../assets/logos/grusp-primary-stacked.png" alt="" style="width:100%;display:block">
+      </div>
+    </div>
+  </section>
+
+  <div style="background:var(--grusp-black);color:var(--grusp-yellow);overflow:hidden;border-block:3px solid var(--grusp-black)">
+    <div style="display:flex;gap:32px;padding:12px 0;white-space:nowrap;animation:grMarquee 32s linear infinite;width:max-content">
+      <sc-for list="{{ featuredConfs }}" as="c" hint-placeholder-count="6">
+        <span style="font-family:var(--font-display);font-weight:800;font-size:22px;display:inline-flex;align-items:center;gap:32px;text-transform:lowercase">{{ c.name }}<i style="color:#fff;font-style:normal;font-size:14px">✺</i></span>
+      </sc-for>
+      <sc-for list="{{ featuredConfs }}" as="c" hint-placeholder-count="6">
+        <span style="font-family:var(--font-display);font-weight:800;font-size:22px;display:inline-flex;align-items:center;gap:32px;text-transform:lowercase">{{ c.name }}<i style="color:#fff;font-style:normal;font-size:14px">✺</i></span>
+      </sc-for>
+    </div>
+  </div>
+
+  <section style="max-width:1320px;margin:0 auto;padding:96px clamp(20px,4vw,56px)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px">
+      <div>
+        <span style="display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--grusp-purple-deep);margin-bottom:14px">// what's coming up</span>
+        <h2 style="font:800 clamp(30px,3.6vw,46px)/1.04 var(--font-display);letter-spacing:-.02em;color:var(--text-strong);margin:0">Conferences on the horizon</h2>
+      </div>
+      <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="ghost" onClick="{{ goConferences }}" hint-size="160px,44px">All conferences →</x-import>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ featuredConfs }}" as="c" hint-placeholder-count="6">
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.ConferenceCard" name="{{ c.name }}" edition="{{ c.lang }}" date="{{ c.date }}" location="{{ c.city }}" accent="{{ c.accent }}" status="{{ c.status }}" description="{{ c.blurb }}" onClick="{{ c.open }}" hint-size="100%,340px"></x-import>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:var(--grusp-purple-deep);color:#fff;padding:clamp(48px,6vw,96px) clamp(20px,4vw,56px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center">
+      <div>
+        <h2 style="font:900 clamp(32px,4vw,54px)/1.02 var(--font-display);letter-spacing:-.02em;margin:0 0 20px;color:#fff">More than a conference.<br>A community.</h2>
+        <p style="font-size:18px;line-height:1.55;opacity:.92;max-width:34em;margin:0 0 28px">5,000+ developers swap ideas every day on our Slack. No gatekeeping, no bravado — just people who like building things for the web.</p>
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="accent" size="lg" onClick="{{ goHome }}" hint-size="220px,52px">Join the community</x-import>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:20px;padding:24px"><h4 style="font-family:var(--font-display);font-weight:800;font-size:18px;margin:0 0 6px;color:#fff">Diverse by design</h4><p style="margin:0;font-size:14.5px;line-height:1.5;opacity:.85">Scholarships, a D&I fund and a Code of Conduct we actually enforce.</p></div>
+        <div style="background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:20px;padding:24px"><h4 style="font-family:var(--font-display);font-weight:800;font-size:18px;margin:0 0 6px;color:#fff">Hands-on</h4><p style="margin:0;font-size:14.5px;line-height:1.5;opacity:.85">Workshops and the GrUSP Academy go deeper than any talk can.</p></div>
+        <div style="background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);border-radius:20px;padding:24px"><h4 style="font-family:var(--font-display);font-weight:800;font-size:18px;margin:0 0 6px;color:#fff">Local roots</h4><p style="margin:0;font-size:14.5px;line-height:1.5;opacity:.85">PUGs and meetups keep the energy going between the big events.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--grusp-yellow);color:var(--grusp-black);padding:clamp(48px,6vw,96px) clamp(20px,4vw,56px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end">
+      <div>
+        <span style="display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">// stay in the loop</span>
+        <h2 style="font:900 clamp(32px,4vw,54px)/1.02 var(--font-display);letter-spacing:-.02em;margin:0 0 20px;color:var(--grusp-black)">Get the newsletter</h2>
+        <p style="font-size:18px;line-height:1.55;max-width:34em;margin:0;color:var(--ink-800)">Updates on upcoming events and initiatives. No spam, certamente.</p>
+      </div>
+      <div style="display:flex;gap:12px;min-width:420px">
+        <div style="flex:1"><x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Input" placeholder="you@dev.it" type="email" hint-size="100%,52px"></x-import></div>
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="primary" size="lg" hint-size="140px,52px">Subscribe</x-import>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isConferences }}" hint-placeholder-val="{{ false }}">
+<div>
+  <section style="max-width:1320px;margin:0 auto;padding:clamp(40px,5vw,72px) clamp(20px,4vw,56px) 24px">
+    <span style="display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--grusp-purple-deep);margin-bottom:14px">// 23 events a year, all over Italy</span>
+    <h1 style="font:900 clamp(48px,6vw,88px)/1 var(--font-display);letter-spacing:-.03em;color:var(--text-strong);margin:0 0 16px">Conferences</h1>
+    <p style="font-size:19px;line-height:1.55;color:var(--text-muted);max-width:40em;margin:0">One community, many languages. Filter by the stack you love — every event ships its own colour and its own crowd.</p>
+  </section>
+  <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;gap:10px;flex-wrap:wrap">
+    <sc-for list="{{ topicsVM }}" as="t" hint-placeholder-count="7">
+      <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Tag" selected="{{ t.selected }}" onClick="{{ t.select }}" hint-size="80px,36px">{{ t.name }}</x-import>
+    </sc-for>
+  </div>
+  <section style="max-width:1320px;margin:0 auto;padding:32px clamp(20px,4vw,56px) 96px">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ filteredConfs }}" as="c" hint-placeholder-count="9">
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.ConferenceCard" name="{{ c.name }}" edition="{{ c.lang }}" date="{{ c.date }}" location="{{ c.city }}" accent="{{ c.accent }}" status="{{ c.status }}" description="{{ c.blurb }}" onClick="{{ c.open }}" hint-size="100%,340px"></x-import>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<div>
+  <section style="background:{{ conf.accent }};color:#fff;padding:24px clamp(20px,4vw,56px) clamp(48px,6vw,80px)">
+    <button onClick="{{ goConferences }}" style="background:rgba(255,255,255,.16);border:none;color:#fff;font-family:var(--font-body);font-weight:700;font-size:14px;padding:8px 16px;border-radius:999px;cursor:pointer;margin-bottom:28px">← All conferences</button>
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center">
+      <div>
+        <div style="display:flex;gap:10px;margin-bottom:16px">
+          <span style="background:var(--grusp-yellow);color:var(--grusp-black);font-weight:800;font-size:12px;padding:5px 12px;border-radius:999px;border:1.5px solid var(--grusp-black)">{{ conf.status }}</span>
+          <span style="background:rgba(0,0,0,.25);font-weight:700;font-size:12px;padding:5px 12px;border-radius:999px">{{ conf.lang }}</span>
+        </div>
+        <h1 style="font:900 clamp(56px,8vw,116px)/.92 var(--font-display);letter-spacing:-.04em;margin:0 0 16px;text-transform:lowercase;color:#fff">{{ conf.name }}</h1>
+        <p style="font-size:20px;line-height:1.5;max-width:30em;margin:0 0 20px;opacity:.95">{{ conf.blurb }}</p>
+        <div style="display:flex;gap:20px;font-weight:700;font-size:15px;margin-bottom:24px">
+          <span>📅 {{ conf.date }}</span>
+          <span>📍 {{ conf.city }}</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="accent" size="lg" hint-size="180px,52px">Get your ticket</x-import>
+          <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="secondary" size="lg" onClick="{{ goConferences }}" hint-size="180px,52px">Submit a talk</x-import>
+        </div>
+      </div>
+      <div style="background:#fff;color:var(--text-body);border:4px solid var(--grusp-black);border-radius:28px;padding:28px;box-shadow:var(--offset-lg)">
+        <span style="font-size:13px;font-weight:700;color:var(--text-subtle);text-transform:uppercase;letter-spacing:.06em">Tickets from</span>
+        <span style="display:block;font-family:var(--font-cond);font-weight:800;font-size:64px;line-height:.9;color:var(--text-strong);margin:4px 0">€149</span>
+        <span style="font-size:13px;color:var(--danger);font-weight:700">Blind-bird ends in 12 days</span>
+        <ul style="list-style:none;padding:20px 0 0;margin:20px 0 0;border-top:1px solid var(--border-default);display:flex;flex-direction:column;gap:10px">
+          <li style="font-size:14.5px;font-weight:600;padding-left:22px;position:relative">✦ Two days, two tracks</li>
+          <li style="font-size:14.5px;font-weight:600;padding-left:22px;position:relative">✦ Workshops included</li>
+          <li style="font-size:14.5px;font-weight:600;padding-left:22px;position:relative">✦ Talks recorded & shared</li>
+          <li style="font-size:14.5px;font-weight:600;padding-left:22px;position:relative">✦ Lunch + social</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1320px;margin:0 auto;padding:96px clamp(20px,4vw,56px)">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px">
+      <div>
+        <span style="display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--grusp-purple-deep);margin-bottom:14px">// the line-up</span>
+        <h2 style="font:800 clamp(30px,3.6vw,46px)/1.04 var(--font-display);letter-spacing:-.02em;color:var(--text-strong);margin:0">Speakers</h2>
+      </div>
+      <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Badge" variant="outline" hint-size="100px,28px">+ 18 more</x-import>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <sc-for list="{{ speakers }}" as="s" hint-placeholder-count="4">
+        <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.SpeakerCard" name="{{ s.name }}" role="{{ s.role }}" company="{{ s.company }}" talk="{{ s.talk }}" hint-size="100%,160px"></x-import>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px) 96px">
+    <span style="display:inline-block;font-family:var(--font-mono);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--grusp-purple-deep);margin-bottom:14px">// a day in the life</span>
+    <h2 style="font:800 clamp(30px,3.6vw,46px)/1.04 var(--font-display);letter-spacing:-.02em;color:var(--text-strong);margin:0 0 28px">Schedule</h2>
+    <div style="border:3px solid var(--grusp-black);border-radius:20px;overflow:hidden;box-shadow:var(--offset-sm)">
+      <div style="display:grid;grid-template-columns:100px 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-muted)"><span style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--grusp-purple-deep)">09:00</span><span style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong)">Registration & coffee</span><span style="font-size:13px;color:var(--text-subtle);font-weight:600">Foyer</span></div>
+      <div style="display:grid;grid-template-columns:100px 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-muted);background:var(--surface-soft)"><span style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--grusp-purple-deep)">09:45</span><span style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong)">Opening keynote</span><span style="font-size:13px;color:var(--text-subtle);font-weight:600">Main stage</span></div>
+      <div style="display:grid;grid-template-columns:100px 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-muted)"><span style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--grusp-purple-deep)">10:45</span><span style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong)">Talks — Track A & B</span><span style="font-size:13px;color:var(--text-subtle);font-weight:600">Stage 1 · Stage 2</span></div>
+      <div style="display:grid;grid-template-columns:100px 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-muted);background:var(--surface-soft)"><span style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--grusp-purple-deep)">13:00</span><span style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong)">Lunch & hallway track</span><span style="font-size:13px;color:var(--text-subtle);font-weight:600">Foyer</span></div>
+      <div style="display:grid;grid-template-columns:100px 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border-muted)"><span style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--grusp-purple-deep)">14:30</span><span style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong)">Workshops</span><span style="font-size:13px;color:var(--text-subtle);font-weight:600">Lab</span></div>
+      <div style="display:grid;grid-template-columns:100px 1fr auto;gap:16px;align-items:center;padding:16px 20px;background:var(--surface-soft)"><span style="font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--grusp-purple-deep)">18:00</span><span style="font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--text-strong)">Social & drinks</span><span style="font-size:13px;color:var(--text-subtle);font-weight:600">Rooftop</span></div>
+    </div>
+  </section>
+
+  <section style="background:var(--grusp-black);color:#fff;padding:clamp(48px,6vw,96px) clamp(20px,4vw,56px)">
+    <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <h2 style="font:900 clamp(32px,4vw,54px)/1.02 var(--font-display);letter-spacing:-.02em;margin:0;color:#fff">See you in {{ confCity }}?</h2>
+      <x-import component-from-global-scope="GrUSPDesignSystem_705bf7.Button" variant="accent" size="lg" hint-size="180px,52px">Get your ticket</x-import>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<footer style="background:var(--surface-soft);border-top:3px solid var(--grusp-black);padding:64px clamp(20px,4vw,56px) 24px">
+  <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px">
+    <div>
+      <img src="../../assets/logos/grusp-grey-h-catleft.png" alt="GrUSP" style="height:40px;display:block;margin-bottom:16px">
+      <p style="font-size:14.5px;color:var(--text-muted);max-width:26em;line-height:1.5">Since 2003, training and connecting the people who build the web in Italy.</p>
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <span style="width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--grusp-black);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer">Sl</span>
+        <span style="width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--grusp-black);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer">X</span>
+        <span style="width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--grusp-black);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer">in</span>
+        <span style="width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--grusp-black);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer">Ig</span>
+        <span style="width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid var(--grusp-black);font-family:var(--font-mono);font-size:11px;font-weight:700;cursor:pointer">YT</span>
+      </div>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-display);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 16px;color:var(--text-strong)">Conferences</h4>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">phpday</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">jsday</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">reactjsday</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">vueday</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">cssday</a>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-display);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 16px;color:var(--text-strong)">Get involved</h4>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Become a speaker</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Become a sponsor</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Become a partner</a>
+      <a onClick="{{ goConferences }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Volunteer</a>
+    </div>
+    <div>
+      <h4 style="font-family:var(--font-display);font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 16px;color:var(--text-strong)">Community</h4>
+      <a onClick="{{ goHome }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">About us</a>
+      <a onClick="{{ goHome }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Code of Conduct</a>
+      <a onClick="{{ goHome }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Accessibility</a>
+      <a onClick="{{ goHome }}" style="display:block;font-size:14.5px;color:var(--text-muted);padding:5px 0;cursor:pointer;text-decoration:none">Diversity & Inclusion Fund</a>
+    </div>
+  </div>
+  <div style="max-width:1320px;margin:28px auto 0;padding-top:20px;border-top:1px solid var(--border-default);display:flex;justify-content:space-between;gap:16px;font-size:12.5px;color:var(--text-subtle);flex-wrap:wrap">
+    <span>© 2026 GrUSP — Associazione Gruppo Utenti e Sviluppatori PHP Italiani · Faenza (RA)</span>
+    <span style="font-family:var(--font-mono)">made with 💛 in Italy</span>
+  </div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { route: 'home', confSlug: 'reactjsday', topic: 'All' };
+
+  confs = [
+    { slug:"phpday", name:"phpday", lang:"PHP", accent:"var(--c-phpday)", date:"15–16 May 2026", city:"Verona, IT", status:"CFP open", blurb:"The oldest PHP conference in Europe — where the Italian PHP community has met since 2007." },
+    { slug:"jsday", name:"jsday", lang:"JavaScript", accent:"var(--c-jsday)", date:"12–13 May 2026", city:"Verona, IT", status:"Tickets live", blurb:"Two days on the language that runs the web, from the runtime up to the framework layer." },
+    { slug:"reactjsday", name:"reactjsday", lang:"Frontend", accent:"var(--c-reactjsday)", date:"23–24 Oct 2026", city:"Verona, IT", status:"CFP open", blurb:"React and the modern frontend, with talks from the people building it in production." },
+    { slug:"vueday", name:"vueday", lang:"Frontend", accent:"var(--c-vueday)", date:"20 Mar 2026", city:"Verona, IT", status:"Tickets live", blurb:"The Italian conference dedicated entirely to Vue.js and its ecosystem." },
+    { slug:"angularday", name:"angularday", lang:"Frontend", accent:"var(--c-angularday)", date:"9 Oct 2026", city:"Bologna, IT", status:"Save the date", blurb:"A full day on Angular — signals, SSR, performance and the road ahead." },
+    { slug:"cssday", name:"cssday", lang:"Design", accent:"var(--c-cssday)", date:"5 Jun 2026", city:"Faenza, IT", status:"CFP open", blurb:"Where CSS, design and the front-of-the-frontend meet for a day of craft." },
+    { slug:"containerday", name:"containerday", lang:"DevOps", accent:"var(--c-containerday)", date:"18 Sep 2026", city:"Bologna, IT", status:"Save the date", blurb:"Containers, orchestration and platform engineering for teams shipping at scale." },
+    { slug:"rubyday", name:"rubyday", lang:"Ruby", accent:"#9b1c1c", date:"13 Nov 2026", city:"Verona, IT", status:"Save the date", blurb:"The Italian Ruby community's yearly gathering — pragmatic, friendly, joyful." },
+    { slug:"kerning", name:"Kerning", lang:"Design", accent:"var(--c-kerning)", date:"24 Apr 2026", city:"Faenza, IT", status:"Tickets live", blurb:"A conference on typography and web design for people who sweat the details." },
+  ];
+
+  speakers = [
+    { name:"Chiara Salvatore", role:"Frontend Engineer", company:"Olo", talk:"Designing for the next billion devices" },
+    { name:"Matteo Beccati", role:"Core maintainer", company:"PostgreSQL", talk:"What's actually new in Postgres 18" },
+    { name:"Lara Lombardi", role:"Staff Engineer", company:"Nearform", talk:"Streaming SSR without the tears" },
+    { name:"Daniel Londero", role:"Principal Engineer", company:"Sourcesense", talk:"Edge runtimes: the good, the bad, the cold start" },
+  ];
+
+  topicNames = ["All","PHP","JavaScript","Frontend","Design","DevOps","Ruby"];
+
+  goHome = () => this.setState({ route: 'home' });
+  goConferences = () => this.setState({ route: 'conferences' });
+
+  renderVals() {
+    const { route, confSlug, topic } = this.state;
+    const conf = this.confs.find(c => c.slug === confSlug) || this.confs[2];
+    const withOpen = this.confs.map(c => ({ ...c, open: () => this.setState({ route: 'detail', confSlug: c.slug }) }));
+    const filtered = topic === 'All' ? withOpen : withOpen.filter(c => c.lang === topic);
+    const topicsVM = this.topicNames.map(t => ({ name: t, selected: t === topic, select: () => this.setState({ topic: t }) }));
+    return {
+      isHome: route === 'home',
+      isConferences: route === 'conferences',
+      isDetail: route === 'detail',
+      featuredConfs: withOpen.slice(0, 6),
+      filteredConfs: filtered,
+      topicsVM,
+      speakers: this.speakers,
+      conf,
+      confCity: conf.city.split(',')[0],
+      goHome: this.goHome,
+      goConferences: this.goConferences,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
