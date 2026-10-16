@@ -14,7 +14,7 @@ Everything here is derived from official material the GrUSP team provided, plus 
 
 - **GRUSP MANUAL 2020** (`uploads/GRUSP MANUAL 2020_web.pdf`) — official brand book. Source of truth for the master palette and the per-conference accent colours.
 - **Official logo pack** (`uploads/grusp *.png`) — the full-colour primary (purple TIGNA cat), the calligraphic alternate, the monochrome black "yellow-eyes" lockups, grayscale variants, and yellow/dark header banners. Cleaned copies live in `assets/logos/`.
-- **Brand fonts** (`uploads/*.otf`) — **Grota Rounded** (display) and **Proxima Nova** + **Proxima Nova Condensed** (text). Self-hosted in `assets/fonts/`.
+- **Brand fonts** (`assets/fonts/*.otf`) — **Grota Rounded** (display) and **Proxima Nova** + **Proxima Nova Condensed** (text). Self-hosted in `assets/fonts/`, one file per real style (name table checked by `tools/check-fonts.py`); file names must match the font's own family/style, never rename by guess.
 - **Brand collateral** (`uploads/intro_Grusp_Tigna.mp4`, `Totem-GrUSP-180x100.pdf`, `Sticker EXA TUTTIFRUTTI.pdf`) — the official logo-reveal animation, a large-format totem and a sticker sheet. Archived in `assets/brand/`.
 - **grusp.org** — live website (WordPress), for copy, tone, IA and imagery.
 
